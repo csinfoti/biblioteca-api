@@ -1,26 +1,39 @@
 package com.fuctura.biblioteca.model;
 
+import com.fuctura.biblioteca.enums.Tamanho;
+
+import javax.persistence.*;
+
+@Entity
 public class Livro {
 
-
-
-    private int id;
-    private String titulo, nome_autor, resumo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String titulo, nome_autor, descricao;
+    private Tamanho tamanho;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    public Categoria getCategoria() {
-        return categoria;
+
+    public Livro() {
     }
 
-    public void setCategoria(Categoria categoria) {
+    public Livro(Integer id, String titulo, String nome_autor, String descricao, Categoria categoria, Tamanho tamanho) {
+        this.id = id;
+        this.titulo = titulo;
+        this.nome_autor = nome_autor;
+        this.descricao = descricao;
         this.categoria = categoria;
+        this.tamanho = tamanho;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,37 +53,27 @@ public class Livro {
         this.nome_autor = nome_autor;
     }
 
-    public String getResumo() {
-        return resumo;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setResumo(String resumo) {
-        this.resumo = resumo;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public Livro(Categoria categoria) {
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
-    @Override
-    public String toString() {
-        return "Livro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", nome_autor='" + nome_autor + '\'' +
-                ", resumo='" + resumo + '\'' +
-                ", categoria=" + categoria +
-                '}';
+    public Tamanho getTamanho() {
+        return tamanho;
     }
 
-    public Livro(int id, String titulo, String nome_autor, String resumo) {
-        this.id = id;
-        this.titulo = titulo;
-        this.nome_autor = nome_autor;
-        this.resumo = resumo;
+    public void setTamanho(Tamanho tamanho) {
+        this.tamanho = tamanho;
     }
-
-   public Livro() {
-        super();
-   }
 }
