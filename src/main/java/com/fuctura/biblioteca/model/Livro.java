@@ -11,7 +11,7 @@ public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String titulo, nome_autor, descricao;
+    private String titulo, nome_autor, texto;
     private Tamanho tamanho;
     @JsonIgnore
     @ManyToOne
@@ -22,11 +22,11 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(Integer id, String titulo, String nome_autor, String descricao, Categoria categoria, Tamanho tamanho) {
+    public Livro(Integer id, String titulo, String nome_autor, String texto, Tamanho tamanho, Categoria categoria) {
         this.id = id;
         this.titulo = titulo;
         this.nome_autor = nome_autor;
-        this.descricao = descricao;
+        this.texto = texto;
         this.categoria = categoria;
         this.tamanho = tamanho;
     }
@@ -55,12 +55,12 @@ public class Livro {
         this.nome_autor = nome_autor;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getTexto() {
+        return texto;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
     public Categoria getCategoria() {

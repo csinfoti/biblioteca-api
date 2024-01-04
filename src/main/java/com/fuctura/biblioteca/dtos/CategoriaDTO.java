@@ -1,24 +1,23 @@
-package com.fuctura.biblioteca.model;
+package com.fuctura.biblioteca.dtos;
 
-import javax.persistence.*;
+import com.fuctura.biblioteca.model.Livro;
+
 import java.util.ArrayList;
 import java.util.List;
-@Entity
-public class Categoria {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+public class CategoriaDTO {
     private Integer id;
     private String nome, descricao;
-    @OneToMany(mappedBy = "categoria")
-    private List<Livro> livros = new ArrayList<>();
+    //private List<Livro> livros = new ArrayList<>();
 
-    public Categoria() {
+    public CategoriaDTO() {
     }
 
-    public Categoria(Integer id, String nome, String descricao) {
+    public CategoriaDTO(Integer id, String nome, String descricao){// List<Livro> livros) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+        //this.livros = livros;
     }
 
     public Integer getId() {
@@ -45,12 +44,11 @@ public class Categoria {
         this.descricao = descricao;
     }
 
+  /*
     public List<Livro> getLivros() {
         return livros;
-    }
-
-    public void setLivros(List<Livro> livros) {
-        this.livros = livros;
-    }
+     }
+   public void setLivros(List<Livro> livros)
+  */
 
 }

@@ -12,6 +12,4 @@ public enum Tamanho {
         this.codigo = codigo;
     }
 
-    Tamanho() {
-    }
 }
